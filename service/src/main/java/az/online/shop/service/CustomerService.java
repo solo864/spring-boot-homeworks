@@ -10,6 +10,7 @@ import az.online.shop.model.Status;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import javax.persistence.EntityGraph;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.graph.GraphSemantic;
 import org.springframework.stereotype.Service;
@@ -34,9 +35,10 @@ public class CustomerService {
     }
 
     public Optional<CustomerReadDto> findById(Integer id) {
+        EntityGraph<?> withOrders = customerRepository.getEntityManager().getEntityGraph("WithOrders");
         Map<String, Object> properties = Map.of(
                 GraphSemantic.LOAD.getJpaHintName(),
-                customerRepository.getEntityManager().getEntityGraph("WithOrders")
+                withOrders
         );
         return customerRepository.findById(id, properties)
                 .map(customerReadMapper::mapFrom);
