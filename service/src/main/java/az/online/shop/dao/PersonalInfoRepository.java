@@ -1,13 +1,7 @@
 package az.online.shop.dao;
 
 import az.online.shop.entity.PersonalInfo;
-import javax.persistence.EntityManager;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public class PersonalInfoRepository extends RepositoryBase<Integer, PersonalInfo> {
-
-    public PersonalInfoRepository(EntityManager entityManager) {
-        super(PersonalInfo.class, entityManager);
-    }
+public interface PersonalInfoRepository extends JpaRepository<PersonalInfo, Integer> {
 }

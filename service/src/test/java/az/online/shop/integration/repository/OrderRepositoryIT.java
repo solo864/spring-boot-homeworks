@@ -2,18 +2,17 @@ package az.online.shop.integration.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import az.online.shop.annotations.IT;
 import az.online.shop.dao.OrderRepository;
 import az.online.shop.entity.Order;
+import az.online.shop.util.IntegrationTestBase;
 import az.online.shop.model.Status;
 import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 
-@IT
 @RequiredArgsConstructor
-class OrderRepositoryIT {
+class OrderRepositoryIT extends IntegrationTestBase {
 
     private final OrderRepository orderRepository;
 
