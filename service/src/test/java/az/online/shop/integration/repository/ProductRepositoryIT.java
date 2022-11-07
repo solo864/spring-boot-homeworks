@@ -2,16 +2,15 @@ package az.online.shop.integration.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import az.online.shop.annotations.IT;
 import az.online.shop.dao.ProductRepository;
 import az.online.shop.entity.Product;
+import az.online.shop.util.IntegrationTestBase;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 
-@IT
 @RequiredArgsConstructor
-class ProductRepositoryIT {
+class ProductRepositoryIT extends IntegrationTestBase {
 
     private final ProductRepository productRepository;
 
@@ -19,7 +18,7 @@ class ProductRepositoryIT {
     void findAllWhereCountMoreThanTwo() {
         var count = 2;
 
-        List<Product> actualResult = productRepository.findAllWhereCountMoreThan(count);
+        List<Product> actualResult = productRepository.findAllByWhereCountMoreThan(count);
         assertThat(actualResult).hasSize(10);
 
         List<String> names = actualResult.stream().map(Product::getName).toList();
@@ -30,7 +29,7 @@ class ProductRepositoryIT {
     void findAllWhereCountMoreThanFifteen() {
         var count = 15;
 
-        List<Product> actualResult = productRepository.findAllWhereCountMoreThan(count);
+        List<Product> actualResult = productRepository.findAllByWhereCountMoreThan(count);
         assertThat(actualResult).hasSize(3);
 
         List<String> names = actualResult.stream().map(Product::getName).toList();

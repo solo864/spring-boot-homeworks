@@ -1,16 +1,15 @@
 package az.online.shop.integration.repository;
 
-import az.online.shop.annotations.IT;
 import az.online.shop.dao.PersonalInfoRepository;
 import az.online.shop.entity.PersonalInfo;
+import az.online.shop.util.IntegrationTestBase;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-@IT
 @RequiredArgsConstructor
-class PersonalInfoRepositoryIT {
+class PersonalInfoRepositoryIT extends IntegrationTestBase {
 
     private final PersonalInfoRepository personalInfoRepository;
 

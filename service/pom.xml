@@ -11,10 +11,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>service</artifactId>
 
-    <properties>
-        <maven.compiler.source>18</maven.compiler.source>
-        <maven.compiler.target>18</maven.compiler.target>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -24,6 +20,15 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>1.17.4</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
