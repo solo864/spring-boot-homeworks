@@ -1,4 +1,4 @@
-package az.online.shop;
+package az.online.shop.unit.service;
 
 import static org.mockito.Mockito.when;
 
@@ -32,7 +32,7 @@ class ProductServiceTest {
         var productReadDto = List.of(new ProductReadDto("test", "test", BigDecimal.ONE, 1));
         var products = List.of(TestDataImporter.getProducts().get(0));
 
-        when(productRepository.findAllWhereCountMoreThan(count)).thenReturn(products);
+        when(productRepository.findAllByWhereCountMoreThan(count)).thenReturn(products);
         when(productReadMapper.mapFrom(products.get(0))).thenReturn(productReadDto.get(0));
 
         List<ProductReadDto> actualResult = productService.getAllWhereCountMoreThan(count);

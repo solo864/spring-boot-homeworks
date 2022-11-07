@@ -25,24 +25,14 @@ public class CustomerService {
 
     public Integer create(CustomerCreateDto customerDto) {
         Customer customer = customerCreateMapper.mapFrom(customerDto);
-
         return customerRepository.save(customer).getId();
     }
 
     public List<CustomerReadDto> getAllCustomersByOrderStatus(Status status) {
-        List<Customer> customers = customerRepository.findAllCustomersByStatus(status);
+        List<Customer> customers = customerRepository.findAllByStatus(status);
         return customerReadMapper.mapFrom(customers);
     }
 
-    public Optional<CustomerReadDto> findById(Integer id) {
-        EntityGraph<?> withOrders = customerRepository.getEntityManager().getEntityGraph("WithOrders");
-        Map<String, Object> properties = Map.of(
-                GraphSemantic.LOAD.getJpaHintName(),
-                withOrders
-        );
-        return customerRepository.findById(id, properties)
-                .map(customerReadMapper::mapFrom);
-    }
 
     public void delete(Customer customer) {
         customerRepository.delete(customer);
