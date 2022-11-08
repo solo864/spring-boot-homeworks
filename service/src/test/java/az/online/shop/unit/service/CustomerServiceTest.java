@@ -1,4 +1,4 @@
-package az.online.shop;
+package az.online.shop.unit.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
@@ -11,7 +11,7 @@ import az.online.shop.mapper.CustomerCreateMapper;
 import az.online.shop.mapper.CustomerReadMapper;
 import az.online.shop.model.Role;
 import az.online.shop.model.Status;
-//import az.online.shop.service.CustomerService;
+import az.online.shop.service.CustomerService;
 import az.online.shop.util.TestDataImporter;
 import java.time.LocalDate;
 import java.util.Collections;
@@ -52,7 +52,7 @@ class CustomerServiceTest {
         List<Customer> customers = List.of(TestDataImporter.getCleveland());
         List<CustomerReadDto> dto = List.of(new CustomerReadDto(1, "test", "test", LocalDate.now(), Role.ADMIN, Collections.emptyList()));
 
-        when(customerRepository.findAllCustomersByStatus(status)).thenReturn(customers);
+        when(customerRepository.findAllByStatus(status)).thenReturn(customers);
         when(customerReadMapper.mapFrom(customers)).thenReturn(dto);
 
         List<CustomerReadDto> actualResult = customerService.getAllCustomersByOrderStatus(status);

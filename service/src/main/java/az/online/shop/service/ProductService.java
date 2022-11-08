@@ -15,7 +15,7 @@ public class ProductService {
     private final ProductReadMapper productReadMapper;
 
     public List<ProductReadDto> getAllWhereCountMoreThan(Integer count) {
-        return productRepository.findAllWhereCountMoreThan(count)
+        return productRepository.findAllByWhereCountMoreThan(count)
                 .stream().map(productReadMapper::mapFrom).toList();
     }
 }
